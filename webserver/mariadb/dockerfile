@@ -1,0 +1,3 @@
+FROM mariadb:10.8.3-jammy
+
+COPY ./config/ /docker-entrypoint-initdb.d/

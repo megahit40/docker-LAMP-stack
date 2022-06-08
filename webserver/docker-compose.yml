@@ -1,0 +1,47 @@
+version: "3.2"
+services:
+
+  apache:
+    build: './apache/'
+    depends_on:
+      - php
+      - db
+    networks:
+      - backend
+      - frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public-html:/var/www/html
+
+  php:
+    build: './php-fpm/'
+    networks:
+      - backend
+    volumes:
+      - ./public-html:/var/www/html 
+
+  db:
+    build: './mariadb/'
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=rootpassword
+      - MARIADB_USER=admin
+      - MARIADB_PASSWORD=password
+      - MARIADB_DATABASE=mysql
+    networks:
+      - backend
+    volumes:
+      - ./mariadb/db_storage:/var/lib/mysql
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+      
+networks:
+  backend:
+  frontend:

@@ -52,4 +52,7 @@ To update the repo:
 cd /home/user/git/a-team
 git pull 
 ```
+#NB
 
+Site root is /webserver/public-html/site
+e.g. index.php / index.html goes there.

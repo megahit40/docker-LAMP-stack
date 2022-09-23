@@ -49,7 +49,7 @@ You can now edit the files in ```/webserver/public-html/``` and reload the brows
 
 To update the repo:
 ```bash
-cd /home/user/git/a-team
+cd <repodirectory>
 git pull 
 ```
 #NB
